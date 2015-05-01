@@ -76,6 +76,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GroceryItemOrder.h" />
+    <ClInclude Include="GroceryList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GroceryItemOrder.cpp" />
+    <ClCompile Include="GroceryList.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
