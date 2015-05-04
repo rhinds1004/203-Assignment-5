@@ -4,6 +4,10 @@
 // parameter is size of List. Max unique item amount is 10.
 GroceryList::GroceryList(int size)
 {
+	for (int i = 0; i < SIZE; i++)
+	{
+		gListItem[i] = NULL;
+	}
 	mArrayLength = size;
 	mCurrentSize = 0;
 	mTotalCost = 0;

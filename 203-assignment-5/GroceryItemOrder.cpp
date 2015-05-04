@@ -23,6 +23,7 @@ GroceryItemOrder::GroceryItemOrder(const GroceryItemOrder& cSource)
 	else
 		mItemName = NULL;
 }
+
 // Assignment operator
 GroceryItemOrder& GroceryItemOrder::operator=(const GroceryItemOrder& cSource)
 {
@@ -46,7 +47,8 @@ GroceryItemOrder& GroceryItemOrder::operator=(const GroceryItemOrder& cSource)
 
 	return *this;
 }
-//Overloaded constructor that takes item name as a c string, item quanity as an int,
+
+//Overloaded constructor that takes item name as a c string, item quantity as an int,
 //item price per unit cost as a double.
 GroceryItemOrder::GroceryItemOrder(const char *iName, const int iAmt, const double iPPU)
 {

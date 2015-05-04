@@ -2,11 +2,13 @@
 #define G_List
 #define SIZE 10
 #include "GroceryItemOrder.h"
+
 class GroceryList
 {
 private:
 	int mArrayLength;
-	GroceryItemOrder *gListItem[SIZE] = {};
+	
+	GroceryItemOrder *gListItem[SIZE] ;
 	int mCurrentSize;
 	double mTotalCost;
 public:

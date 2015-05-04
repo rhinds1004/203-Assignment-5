@@ -23,9 +23,9 @@ public:
 	}
 	double itemCost();
 	// Copy constructor
-	GroceryItemOrder::GroceryItemOrder(const GroceryItemOrder& Source);
+	GroceryItemOrder(const GroceryItemOrder& Source);
 	// Assignment operator
-	GroceryItemOrder& GroceryItemOrder::operator=(const GroceryItemOrder& cSource);
+	GroceryItemOrder& operator=(const GroceryItemOrder& cSource);
 	~GroceryItemOrder();
 };
 
