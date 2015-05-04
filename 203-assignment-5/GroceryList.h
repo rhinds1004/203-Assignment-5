@@ -5,14 +5,19 @@
 class GroceryList
 {
 private:
-	//GroceryItemOrder gListArray[SIZE];
-	GroceryItemOrder * gListArray = new GroceryItemOrder[SIZE];
 	int mArrayLength;
-	void setListPos(int arraySlot);
+	GroceryItemOrder *gListItem[SIZE] = {};
+	int mCurrentSize;
+	double mTotalCost;
 public:
-	
-	void addItem( const GroceryItemOrder& itemAdd);
-	GroceryList();
+	GroceryList(int size);
+
+	bool addItem(const GroceryItemOrder &itemAdd);
+	int getArrayLengthCounter() const
+	{
+		 return mCurrentSize;
+	}
+	double totalCost() const;
 	~GroceryList();
 };
 

@@ -1,24 +1,63 @@
 #include "GroceryItemOrder.h"
-#include <cmath>
 //default
 GroceryItemOrder::GroceryItemOrder()
 {
-	///*mItemName = new char[];
-	//mItemQuantity = 0;
-	//mItemPricePerUnit = 0;*/
-
-	//strcpy(mItemName, iName);
+	//here for GroceryList Class to work.
+	mItemName = NULL;
 }
 
+// Copy constructor
+GroceryItemOrder::GroceryItemOrder(const GroceryItemOrder& cSource)
+{
+	int tempSize = strlen(cSource.mItemName) + 1;
+	mItemQuantity = cSource.mItemQuantity;
+	mItemPricePerUnit = cSource.mItemPricePerUnit;
+	//allocates memory and copies source mItemName into copy mItemName and appends a NULL to copy char array
+	//if the object member pointer is not NULL.
+	if (*(cSource.mItemName) != NULL)
+	{
+		mItemName = new char[tempSize];
+		strncpy(mItemName, cSource.mItemName, tempSize);
+		cSource.mItemName[tempSize - 1] = '\0';
+	}
+	else
+		mItemName = NULL;
+}
+// Assignment operator
+GroceryItemOrder& GroceryItemOrder::operator=(const GroceryItemOrder& cSource)
+{
+	// check for self-assignment
+	if (this == &cSource)
+		return *this;
+	int tempSize = strlen(cSource.mItemName) + 1;
+	// deallocate any value that this array is holding
+	delete[] mItemName;
+
+	//if the object member pointer is not NULL.
+	//allocates memory and copies source mItemName into copy mItemName and appends a NULL to copy char array
+	if (*(cSource.mItemName) != NULL)
+	{
+		mItemName = new char[tempSize];
+		strncpy(mItemName, cSource.mItemName, tempSize);
+		cSource.mItemName[tempSize - 1] = '\0';
+	}
+	else
+		mItemName = NULL;
+
+	return *this;
+}
 //Overloaded constructor that takes item name as a c string, item quanity as an int,
 //item price per unit cost as a double.
-GroceryItemOrder::GroceryItemOrder(const char * iName, const int iAmt, const double iPPU)
+GroceryItemOrder::GroceryItemOrder(const char *iName, const int iAmt, const double iPPU)
 {
-	mItemName = new char[strlen(iName) + 1];
+	int tempSize = strlen(iName) + 1;
+	mItemName = new char[tempSize];
+
 	mItemQuantity = iAmt;
 	mItemPricePerUnit = iPPU;
 
-	strcpy(mItemName, iName);
+	strncpy(mItemName, iName, tempSize);
+	mItemName[tempSize - 1] = '\0';
 }
 
 //Sets object member item quaninty to the passed amount if it 0 or greater.

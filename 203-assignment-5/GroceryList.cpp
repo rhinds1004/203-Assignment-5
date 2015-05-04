@@ -1,22 +1,51 @@
 #include "GroceryList.h"
 
-
-GroceryList::GroceryList()
+//Constructor
+// parameter is size of List. Max unique item amount is 10.
+GroceryList::GroceryList(int size)
 {
-	mArrayLength = 0;
+	mArrayLength = size;
+	mCurrentSize = 0;
+	mTotalCost = 0;
 }
 
-void GroceryList::addItem(const GroceryItemOrder& itemAdd)
+//A function that will add a GroceryItemOrder object to a GroceryList object
+//if the list is not full ( items 10 or greater).
+bool GroceryList::addItem(const GroceryItemOrder &itemAdd)
 {
-	if (mArrayLength < SIZE)
+	int i = -1;
+	bool status;
+	//increments through GroceryList object untill an open spot is found or i becomes larger then max amount.
+	do
 	{
-		gListArray[mArrayLength] = itemAdd;
-		mArrayLength++;
+		i++;
 		
+	} while (gListItem[i] != NULL);
+	if (i < mArrayLength)
+	{
+		//memory allocation here need needs non default destructor. 
+		//Since item name memory is allocated else where, have to allocate new memory to prevent shallow copying.
+		gListItem[i] = new GroceryItemOrder(itemAdd);
+		mCurrentSize += 1;
+		mTotalCost += gListItem[i]->itemCost();
+		status = true;
 	}
+	else
+	{
+		std::cout << "Error. List is full." << std::endl;
+		status = false;
+	}
+	return status;
 }
 
+
+//Destructor
 GroceryList::~GroceryList()
 {
-	//delete[] gListArray;
+	
+	for (int i = 0; i < SIZE; i++)
+	{
+		delete gListItem[i];
+	}
+	
 }

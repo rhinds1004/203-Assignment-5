@@ -7,16 +7,19 @@ using namespace std;
 
 int main()
 {
-	int i = 0;
-	char thingsName[] = "Apples";
+	const char thingsName[] = "Apples";
 	int thingsAmount = 10;
-	double thingsPPU = 2.53;
-	GroceryList list1;
-	//GroceryItemOrder item;
+	double thingsPPU = 1.1;
+	
+	
+	
 	GroceryItemOrder item(thingsName,thingsAmount, thingsPPU);
-	cout << item.itemCost();
-	//GroceryList list1;
-	for (i = 0; i < 10; i++)
-	list1.addItem(item);
-	return 0;
-}
+	GroceryItemOrder item2("pears", 5,1);
+	GroceryList list2(10);
+
+	list2.addItem(item2);
+	
+	while (list2.addItem(item) != false);
+	cin.get();
+		return 0;
+} 
