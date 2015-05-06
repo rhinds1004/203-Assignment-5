@@ -4,6 +4,11 @@
 // parameter is size of List. Max unique item amount is 10.
 GroceryList::GroceryList(int size)
 {
+	if(size > 10)
+	{
+		std::cout << "GroceryList can only hold 10 unique item. Excess was not added to list." << std::endl;
+		size = 10;
+	}
 	for (int i = 0; i < SIZE; i++)
 	{
 		gListItem[i] = NULL;
@@ -43,11 +48,12 @@ bool GroceryList::addItem(const GroceryItemOrder &itemAdd)
 }
 
 
+
 //Destructor
 GroceryList::~GroceryList()
 {
 	
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < mCurrentSize; i++)
 	{
 		delete gListItem[i];
 	}

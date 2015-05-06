@@ -75,6 +75,11 @@ double GroceryItemOrder::itemCost()
 {
 	return getItemQuantity()*(getItemPPU()*1.0);
 }
+std::ostream &operator << (std::ostream &strm, const GroceryItemOrder &obj)
+{
+	strm << "item name: " << obj.mItemName << " item quantity: " << obj.mItemQuantity << " item price per unit: " << obj.mItemPricePerUnit;
+	return strm;
+}
 GroceryItemOrder::~GroceryItemOrder()
 {
 	delete [] mItemName;

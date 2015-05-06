@@ -1,7 +1,11 @@
-#include <iostream>
+
 #ifndef G_ItemOrder
 #define G_ItemOrder
 #include <cstring>
+#include <iostream>
+class GroceryItemOrder;
+std::ostream &operator << (std::ostream &, const GroceryItemOrder &);
+
 class GroceryItemOrder
 {
 private:
@@ -27,6 +31,8 @@ public:
 	// Assignment operator
 	GroceryItemOrder& operator=(const GroceryItemOrder& cSource);
 	~GroceryItemOrder();
+
+	friend std::ostream &operator << (std::ostream &, const GroceryItemOrder &);
 };
 
 #endif
